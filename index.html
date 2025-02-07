@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento</title>
+</head>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  
+    // Configuração do Firebase (substitua pelos seus dados)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuzKA2uk5ev5RAk_ksX1xLN0fungTUw0c",
+      authDomain: "agendamentos-9eae2.firebaseapp.com",
+      projectId: "agendamentos-9eae2",
+      storageBucket: "agendamentos-9eae2.firebasestorage.app",
+      messagingSenderId: "310417942204",
+      appId: "1:310417942204:web:b27f416b763250803352b9",
+    };
+  
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+  
+    // Função para salvar agendamentos
+    async function salvarAgendamento(nome, telefone, data, hora) {
+      try {
+        console.log("Salvando agendamento:", nome, telefone, data, hora);  // Log de depuração
+        const docRef = await addDoc(collection(db, "agendamentos"), { nome, telefone, data, hora });
+        console.log("Agendamento salvo com ID:", docRef.id);  // Log de sucesso
+        alert("Agendamento realizado!");
+      } catch (e) {
+        console.error("Erro ao salvar agendamento: ", e);  // Log de erro
+      }
+    }
+  
+    // Exemplo de uso ao clicar no botão
+    document.getElementById("btnAgendar").addEventListener("click", () => {
+      const nome = document.getElementById("nome").value;
+      const telefone = document.getElementById("telefone").value;  // Usando o telefone agora
+      const data = document.getElementById("data").value;
+      const hora = document.getElementById("hora").value;
+      salvarAgendamento(nome, telefone, data, hora);
+    });
+</script>
+  
+<body>
+  <h2>Agendamento Online</h2>
+  <input type="text" id="nome" placeholder="Nome">
+  <input type="tel" id="telefone" placeholder="Telefone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+  <input type="date" id="data">
+  <input type="time" id="hora">
+  <button id="btnAgendar">Agendar</button>
+</body>
+</html>
