@@ -33,20 +33,26 @@ body {
 }
 
 footer {
-    position: absolute;
-    bottom: 10px;
+    position: relative;
+    margin-top: auto;
+    padding: 20px 0;
     text-align: center;
     width: 100%;
     color: white;
     font-size: 14px;
 }
 
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 .footer-item {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 5px;
-    margin: 5px 0;
 }
 
 footer .social-icon {
@@ -91,15 +97,7 @@ button:hover {
 }
 
 @media (max-width: 600px) {
-    input, button {
-        width: 80%;
-    }
-
-    .texto-cima {
-        font-size: 36px;
-    }
-
-    .texto-baixo {
-        font-size: 18px;
+    .footer-content {
+        margin-top: 20px;
     }
 }
