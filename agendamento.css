@@ -6,16 +6,52 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
-    background-image: url('fundo.jpg'); /* Substitua com o caminho para sua imagem */
+    background-image: url('fundo.jpg');
     background-size: cover;
     background-position: center;
     color: white;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
+#mensagem-sucesso {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    font-weight: bold;
+}
+
 .container {
     text-align: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+footer .social-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .texto-cima {
@@ -30,10 +66,6 @@ body {
     margin-top: 10px;
 }
 
-.formulario {
-    margin-top: 30px; /* Espaço entre as escritas e o formulário */
-}
-
 input, button {
     width: 80%;
     padding: 10px;
@@ -41,13 +73,9 @@ input, button {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-}
-
-input[type="text"], input[type="tel"], input[type="date"], input[type="time"] {
-    width: 80%;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    display: block;
 }
 
 button {
@@ -62,10 +90,9 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Responsividade */
 @media (max-width: 600px) {
-    input[type="text"], input[type="tel"], input[type="date"], input[type="time"], button {
-        width: 90%;
+    input, button {
+        width: 80%;
     }
 
     .texto-cima {
